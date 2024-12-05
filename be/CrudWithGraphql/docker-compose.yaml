@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  graphql-backend:
+    build:
+      context: .
+    container_name: graphql-backend
+    ports:
+      - "8080:80"
+    depends_on:
+      - mongodb
+    environment:
+      API_KEY: "4a9b54b2-dc74-46a2-bd96-30f62593026b"
