@@ -19,8 +19,12 @@ export function useScoreLogic() {
   const toast = useToast();
 
   function buyItemMain(id: string, cost: number) {
+    console.log("buyItemMain", id, cost);
+
     if (storeScore >= cost) {
-      decrementByAmount(cost);
+      console.log("decrementing");
+
+      dispatch(decrementByAmount(cost));
       dispatch(buyItem(id));
     } else {
       toast.show("Not enough currency", { type: "warning" });
@@ -38,7 +42,7 @@ export function useScoreLogic() {
     cost: number;
   }) {
     if (storeScore >= cost) {
-      decrementByAmount(cost);
+      dispatch(decrementByAmount(cost));
       dispatch(buyUnlockable({ unlockableId, itemId }));
       dispatch(increasePassiveByAmount(passiveValue));
     } else {

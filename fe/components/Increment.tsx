@@ -6,6 +6,7 @@ import {
   increment,
   incrementByAmount,
 } from "@/store/slices/counterSlice";
+import { persistor } from "@/store/testStore";
 
 export function Increment(props: { value?: number }) {
   const incrementor = useSelector((state) => state.counter.incrementor);
@@ -17,11 +18,9 @@ export function Increment(props: { value?: number }) {
         <button
           style={styles.Button}
           aria-label="Increment value"
-          onClick={() =>
-            dispatch(incrementByAmount(props?.value ?? incrementor))
-          }
+          onClick={() => persistor.purge()}
         >
-          Increment
+          Purge
         </button>
       </div>
     </div>

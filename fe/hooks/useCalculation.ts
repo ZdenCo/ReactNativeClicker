@@ -14,12 +14,9 @@ export default function useCalculation() {
 
   useEffect(() => {
     const calculationLoop = setInterval(() => {
-      console.log(passiveRef.current);
       if (!passiveRef.current) return;
       dispatch(incrementByAmount(passiveRef.current));
-
-      console.log("Calculating...");
-    }, 1000);
+    }, 500);
 
     return () => clearInterval(calculationLoop);
   }, []);

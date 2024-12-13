@@ -43,24 +43,12 @@ export default function App() {
           </View>
           <View style={styles.animalContainerBack}>
             {progressionObject.slice(3).map((item, index) => (
-              <ClickableItem
-                key={index}
-                image={item.image}
-                width={100}
-                height={150}
-                value={item.value}
-              />
+              <ClickableItem key={index} item={item} />
             ))}
           </View>
           <View style={styles.animalContainerFront}>
             {progressionObject.slice(0, 3).map((item, index) => (
-              <ClickableItem
-                key={index}
-                image={item.image}
-                width={80}
-                height={100}
-                value={item.value}
-              />
+              <ClickableItem key={index} item={item} />
             ))}
           </View>
         </View>
@@ -96,6 +84,7 @@ const styles = StyleSheet.create({
     display: "flex",
     width: "100%",
     alignItems: "center",
+    pointerEvents: "none",
     position: "absolute",
     justifyContent: "center",
 

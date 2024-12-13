@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const counterSlice = createSlice({
   name: "counter",
   initialState: {
-    score: 1,
+    score: 0,
     incrementor: 1,
     passive: 0,
   },
@@ -20,23 +20,19 @@ export const counterSlice = createSlice({
       state.score -= 1;
     },
     incrementByAmount: (state, action) => {
-      console.log(action.payload);
-
       state.score += action.payload;
     },
     decrementByAmount: (state, action) => {
       console.log(action.payload);
+      console.log(state.score);
 
       state.score -= action.payload;
+      console.log("after", state.score);
     },
     increaseIncrementorByAmount: (state, action) => {
-      console.log(action.payload);
-
       state.incrementor += action.payload;
     },
     increasePassiveByAmount: (state, action) => {
-      console.log(action.payload);
-
       state.passive += action.payload;
     },
   },

@@ -1,3 +1,5 @@
+import { ImageSourcePropType } from "react-native";
+
 // Type for Unlockables
 export interface Unlockable {
   id: string;
@@ -12,8 +14,9 @@ export interface ProgressionItem {
   id: string;
   name: string;
   value: number;
-  image: any;
-  lockedImage: any;
+  width: number;
+  height: number;
+  image: ImageSourcePropType;
   cost: number;
   isUnlocked: boolean;
   unlockables: Unlockable[]; // Optional because not all items have unlockables

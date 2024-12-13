@@ -3,18 +3,9 @@ import { Animated, Image, StyleSheet, Pressable, View } from "react-native";
 import { useDispatch } from "react-redux";
 import { incrementByAmount } from "@/store/slices/counterSlice";
 import { HelloWave } from "./HelloWave";
+import { ProgressionItem } from "@/types";
 
-export default function ClickableItem({
-  image,
-  width,
-  height,
-  value,
-}: {
-  image: any;
-  width: number;
-  height: number;
-  value: number;
-}) {
+export default function ClickableItem({ item }: { item: ProgressionItem }) {
   const dispatch = useDispatch();
   const [activeAnimations, setActiveAnimations] = useState<number[]>([]);
 
@@ -37,7 +28,7 @@ export default function ClickableItem({
       toValue: 0.9,
       useNativeDriver: true,
     }).start(() => {
-      dispatch(incrementByAmount(value));
+      dispatch(incrementByAmount(item.value));
       handleCreateElement();
     });
   };
@@ -49,22 +40,40 @@ export default function ClickableItem({
     }).start();
   };
 
+  const itemSizeStyle = { width: item.width, height: item.height };
+  console.log(itemSizeStyle);
+  console.log(item);
+
   return (
-    <View style={{ position: "relative" }}>
-      <Pressable
-        onPressIn={handlePressIn}
-        onPressOut={handlePressOut}
-        style={{ width, height }}
-      >
-        <Animated.View
-          style={[
-            styles.clickableItemContainer,
-            { transform: [{ scale: scaleAnim }], width, height },
-          ]}
+    <View>
+      {item.isUnlocked ? (
+        <Pressable
+          onPressIn={handlePressIn}
+          onPressOut={handlePressOut}
+          style={{ pointerEvents: "auto", ...itemSizeStyle }}
         >
-          <Image style={{ width: "100%", height: "100%" }} source={image} />
-        </Animated.View>
-      </Pressable>
+          <Animated.View
+            style={[
+              styles.clickableItemContainer,
+              { transform: [{ scale: scaleAnim }], ...itemSizeStyle },
+            ]}
+          >
+            <Image
+              style={{ width: "100%", height: "100%" }}
+              source={item.image}
+            />
+          </Animated.View>
+        </Pressable>
+      ) : (
+        <View
+          style={{
+            ...itemSizeStyle,
+            backgroundColor: "red",
+            borderColor: "black",
+            borderWidth: 1,
+          }}
+        ></View>
+      )}
       <View style={{ position: "absolute", bottom: 0, pointerEvents: "none" }}>
         {activeAnimations.map((id) => (
           <HelloWave key={id} onComplete={() => {}} />

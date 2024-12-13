@@ -11,8 +11,6 @@ export default function Header() {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
-    console.log("storeScore", storeScore);
-
     setPrevScore(score);
 
     setScore(storeScore);
