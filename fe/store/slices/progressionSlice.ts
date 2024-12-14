@@ -16,6 +16,7 @@ export const progressionSlice = createSlice({
         height: 100,
         image: rabbitImage,
         value: 1000,
+        requiredPats: 0,
         cost: 0,
         isUnlocked: false,
         unlockables: [
@@ -41,6 +42,7 @@ export const progressionSlice = createSlice({
         width: 100,
         height: 150,
         value: 2,
+        requiredPats: 0,
         image: huskyImage,
         cost: 100,
         isUnlocked: false,
@@ -53,6 +55,7 @@ export const progressionSlice = createSlice({
         height: 100,
         value: 3,
         image: huskyImage,
+        requiredPats: 0,
         cost: 1000,
         isUnlocked: false,
         unlockables: [],
@@ -64,6 +67,7 @@ export const progressionSlice = createSlice({
         height: 100,
         value: 4,
         image: huskyImage,
+        requiredPats: 0,
         cost: 10000,
         isUnlocked: false,
         unlockables: [],
@@ -75,6 +79,7 @@ export const progressionSlice = createSlice({
         height: 100,
         value: 4,
         image: huskyImage,
+        requiredPats: 0,
         cost: 10000,
         isUnlocked: false,
         unlockables: [],
@@ -86,6 +91,7 @@ export const progressionSlice = createSlice({
         height: 100,
         value: 4,
         image: huskyImage,
+        requiredPats: 0,
         cost: 10000,
         isUnlocked: false,
         unlockables: [],
@@ -97,6 +103,7 @@ export const progressionSlice = createSlice({
         height: 100,
         value: 4,
         image: huskyImage,
+        requiredPats: 0,
         cost: 10000,
         isUnlocked: false,
         unlockables: [],
@@ -104,6 +111,19 @@ export const progressionSlice = createSlice({
     ],
   },
   reducers: {
+    requirePats: (state, action) => {
+      const item = state.progression.find(
+        (item) => item.id === action.payload.id
+      );
+      if (!item) throw new Error("Item not found");
+      item.requiredPats += action.payload.requiredPats;
+    },
+    pat: (state, action) => {
+      const item = state.progression.find((item) => item.id === action.payload);
+      if (!item) throw new Error("Item not found");
+      if (item.requiredPats === 0) return;
+      item.requiredPats -= 1;
+    },
     buyItem: (state, action) => {
       const item = state.progression.find((item) => item.id === action.payload);
       if (!item) throw new Error("Item not found");
@@ -123,6 +143,7 @@ export const progressionSlice = createSlice({
   },
 });
 
-export const { buyItem, buyUnlockable } = progressionSlice.actions;
+export const { buyItem, buyUnlockable, requirePats, pat } =
+  progressionSlice.actions;
 
 export default progressionSlice.reducer;

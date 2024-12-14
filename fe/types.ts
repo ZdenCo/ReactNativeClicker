@@ -17,6 +17,7 @@ export interface ProgressionItem {
   width: number;
   height: number;
   image: ImageSourcePropType;
+  requiredPats: number;
   cost: number;
   isUnlocked: boolean;
   unlockables: Unlockable[]; // Optional because not all items have unlockables

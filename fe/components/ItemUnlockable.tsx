@@ -1,5 +1,5 @@
 import { ProgressionItem, Unlockable } from "@/types";
-import { Button, StyleSheet } from "react-native";
+import { Button, StyleSheet, View, Text } from "react-native";
 import { useDispatch } from "react-redux";
 import { buyUnlockable } from "@/store/slices/progressionSlice";
 import { Collapsible } from "./Collapsible";
@@ -13,16 +13,16 @@ export default function Item({
   onBuy: () => void;
 }) {
   return (
-    <div>
-      <div style={styles.itemContainer}>
-        <div>{unlockable.name}</div>
+    <View>
+      <View style={styles.itemContainer}>
+        <Text>{unlockable.name}</Text>
         <BuyButton
           cost={unlockable.cost}
           isUnlocked={unlockable.isUnlocked}
           onClick={() => onBuy()}
         />
-      </div>
-    </div>
+      </View>
+    </View>
   );
 }
 

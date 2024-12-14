@@ -1,5 +1,5 @@
 import { ProgressionItem } from "@/types";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import { Collapsible } from "./Collapsible";
 import ItemUnlockable from "./ItemUnlockable";
 import BuyButton from "./BuyButton";
@@ -8,15 +8,15 @@ import { useScoreLogic } from "@/hooks/useScoreLogic";
 export default function Item(props: { item: ProgressionItem }) {
   const { buyItemMain, buyUnlockableMain } = useScoreLogic();
   return (
-    <div>
-      <div style={styles.itemContainer}>
-        <div>{props.item.name}</div>
+    <View>
+      <View style={styles.itemContainer}>
+        <Text>{props.item.name}</Text>
         <BuyButton
           cost={props.item.cost}
           isUnlocked={props.item.isUnlocked}
           onClick={() => buyItemMain(props.item.id, props.item.cost)}
         />
-      </div>
+      </View>
       {props.item.isUnlocked && (
         <Collapsible title="Unlockables">
           {props.item.unlockables.map((unlockable) => (
@@ -34,7 +34,7 @@ export default function Item(props: { item: ProgressionItem }) {
           ))}
         </Collapsible>
       )}
-    </div>
+    </View>
   );
 }
 

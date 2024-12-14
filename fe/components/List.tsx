@@ -1,13 +1,13 @@
 import { ReactElement } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 export default function List({ children }: { children: React.ReactNode }) {
-  return <div style={styles.listContainer}>{children}</div>;
+  return <View style={styles.listContainer}>{children}</View>;
 }
 
 const styles = StyleSheet.create({
   listContainer: {
-    padding: 10,
+    padding: 20,
     flexDirection: "column",
     display: "flex",
     backgroundColor: "#f0f0f0",

@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Pressable, StyleSheet, View, Text } from "react-native";
 
 export default function BuyButton({
   isUnlocked,
@@ -10,17 +10,17 @@ export default function BuyButton({
   onClick: () => void;
 }) {
   return (
-    <div>
+    <View>
       {!isUnlocked && (
-        <button
+        <Pressable
           style={styles.button}
           aria-label="Increment value"
-          onClick={onClick}
+          onPress={onClick}
         >
-          {cost}
-        </button>
+          <Text>{cost}</Text>
+        </Pressable>
       )}
-    </div>
+    </View>
   );
 }
 

@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { incrementByAmount } from "@/store/slices/counterSlice";
 import { HelloWave } from "./HelloWave";
 import { ProgressionItem } from "@/types";
+import { pat } from "@/store/slices/progressionSlice";
+import { RequiredPats } from "./RequiredPats";
 
 export default function ClickableItem({ item }: { item: ProgressionItem }) {
   const dispatch = useDispatch();
@@ -28,7 +30,9 @@ export default function ClickableItem({ item }: { item: ProgressionItem }) {
       toValue: 0.9,
       useNativeDriver: true,
     }).start(() => {
-      dispatch(incrementByAmount(item.value));
+      const multiplier = item.requiredPats ? 10 : 1;
+      dispatch(incrementByAmount(item.value * multiplier));
+      dispatch(pat(item.id));
       handleCreateElement();
     });
   };
@@ -52,6 +56,7 @@ export default function ClickableItem({ item }: { item: ProgressionItem }) {
           onPressOut={handlePressOut}
           style={{ pointerEvents: "auto", ...itemSizeStyle }}
         >
+          {item.requiredPats}
           <Animated.View
             style={[
               styles.clickableItemContainer,
@@ -74,6 +79,9 @@ export default function ClickableItem({ item }: { item: ProgressionItem }) {
           }}
         ></View>
       )}
+      <View style={{ position: "absolute", top: 0, pointerEvents: "none" }}>
+        {item.requiredPats && <RequiredPats></RequiredPats>}
+      </View>
       <View style={{ position: "absolute", bottom: 0, pointerEvents: "none" }}>
         {activeAnimations.map((id) => (
           <HelloWave key={id} onComplete={() => {}} />
@@ -85,6 +93,7 @@ export default function ClickableItem({ item }: { item: ProgressionItem }) {
 
 const styles = StyleSheet.create({
   clickableItemContainer: {
+    position: "relative",
     borderRadius: 10,
     overflow: "hidden",
   },

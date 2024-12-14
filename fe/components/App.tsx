@@ -8,23 +8,26 @@ import {
 } from "react-native";
 
 import { useSelector } from "react-redux";
-import { Increment } from "@/components/Increment";
 import Header from "@/components/Header";
-import { Increase } from "@/components/Increase";
 import { ProgressionItem } from "@/types";
 import List from "@/components/List";
 import Item from "@/components/Item";
-import useCalculation from "@/hooks/useCalculation";
+import useLoops from "@/hooks/useLoops";
 import ClickableItem from "./ClickableItem";
 import { ScrollView } from "react-native-gesture-handler";
 import { useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function App() {
-  useCalculation();
+  useLoops();
   const progressionObject = useSelector(
     (state) => state.progression.progression
   ) as ProgressionItem[];
+
+  if ((Text as any).defaultProps == null) {
+    (Text as any).defaultProps = {};
+  }
+  (Text as any).defaultProps.style = { fontFamily: "Pixelify" };
 
   return (
     <ScrollView>
@@ -59,8 +62,6 @@ export default function App() {
           <Item key={index} item={item} />
         ))}
       </List>
-      <Increase value={1} />
-      <Increment />
     </ScrollView>
   );
 }
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
     width: "100%",
     position: "absolute",
     justifyContent: "center",
-    bottom: 50,
+    bottom: 80,
     flexDirection: "row",
   },
   titleContainer: {
