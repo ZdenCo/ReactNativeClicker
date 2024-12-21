@@ -2,8 +2,11 @@
 
 import { ProgressionData } from "@/types";
 import { createSlice } from "@reduxjs/toolkit";
-import rabbitImage from "@/assets/images/rabbit.webp";
-import huskyImage from "@/assets/images/husky.png";
+import ede from "@/assets/images/ede.png";
+import bob from "@/assets/images/bob.png";
+import chic from "@/assets/images/chic.png";
+import nair from "@/assets/images/nair.png";
+import sne from "@/assets/images/sne.png";
 
 export const progressionSlice = createSlice({
   name: "progression",
@@ -14,7 +17,7 @@ export const progressionSlice = createSlice({
         name: "Eduard Kralik",
         width: 100,
         height: 100,
-        image: rabbitImage,
+        image: ede,
         value: 1000,
         requiredPats: 0,
         cost: 0,
@@ -22,14 +25,21 @@ export const progressionSlice = createSlice({
         unlockables: [
           {
             id: 1,
-            name: "Item1.1",
+            name: "Dropsy",
             passiveValue: 1000,
             cost: 100,
             isUnlocked: false,
           },
           {
             id: 2,
-            name: "Item1.2",
+            name: "Zralok",
+            passiveValue: 1000,
+            cost: 100,
+            isUnlocked: false,
+          },
+          {
+            id: 2,
+            name: "Ledvina",
             passiveValue: 100000,
             cost: 1000,
             isUnlocked: false,
@@ -38,47 +48,79 @@ export const progressionSlice = createSlice({
       },
       {
         id: 2,
-        name: "Item2",
+        name: "Bobisan",
         width: 100,
         height: 150,
         value: 2,
         requiredPats: 0,
-        image: huskyImage,
+        image: bob,
         cost: 100,
         isUnlocked: false,
-        unlockables: [],
+        unlockables: [
+          {
+            id: 1,
+            name: "Balonek",
+            passiveValue: 1000,
+            cost: 100,
+            isUnlocked: false,
+          },
+          {
+            id: 2,
+            name: "Hlavolam",
+            passiveValue: 1000,
+            cost: 100,
+            isUnlocked: false,
+          },
+          {
+            id: 3,
+            name: "Postylka",
+            passiveValue: 100000,
+            cost: 1000,
+            isUnlocked: false,
+          },
+        ],
       },
       {
         id: 3,
-        name: "Item3",
+        name: "Nairuska",
         width: 100,
         height: 100,
         value: 3,
-        image: huskyImage,
+        image: nair,
         requiredPats: 0,
         cost: 1000,
         isUnlocked: false,
-        unlockables: [],
+        unlockables: [
+          {
+            id: 1,
+            name: "Balonek",
+            passiveValue: 1000,
+            cost: 100,
+            isUnlocked: false,
+          },
+          {
+            id: 2,
+            name: "Hlavolam",
+            passiveValue: 1000,
+            cost: 100,
+            isUnlocked: false,
+          },
+          {
+            id: 3,
+            name: "Postylka",
+            passiveValue: 100000,
+            cost: 1000,
+            isUnlocked: false,
+          },
+        ],
       },
       {
         id: 4,
-        name: "Item4",
+        name: "Chico",
         width: 100,
         height: 100,
         value: 4,
-        image: huskyImage,
-        requiredPats: 0,
-        cost: 10000,
-        isUnlocked: false,
-        unlockables: [],
-      },
-      {
-        id: 5,
-        name: "Item4",
-        width: 100,
-        height: 100,
-        value: 4,
-        image: huskyImage,
+        image: chic,
         requiredPats: 0,
         cost: 10000,
         isUnlocked: false,
@@ -86,23 +128,11 @@ export const progressionSlice = createSlice({
       },
       {
         id: 6,
-        name: "Item4",
+        name: "Snezenka",
         width: 100,
         height: 100,
         value: 4,
-        image: huskyImage,
-        requiredPats: 0,
-        cost: 10000,
-        isUnlocked: false,
-        unlockables: [],
-      },
-      {
-        id: 7,
-        name: "Item4",
-        width: 100,
-        height: 100,
-        value: 4,
-        image: huskyImage,
+        image: sne,
         requiredPats: 0,
         cost: 10000,
         isUnlocked: false,

@@ -33,7 +33,7 @@ export default function App() {
     <ScrollView>
       <ImageBackground
         style={styles.topContainer}
-        source={require("@/assets/images/background.webp")}
+        source={require("@/assets/images/bg.jpg")}
       >
         <Header />
 
