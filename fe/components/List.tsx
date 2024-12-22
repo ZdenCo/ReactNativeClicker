@@ -9,8 +9,9 @@ const styles = StyleSheet.create({
   listContainer: {
     padding: 20,
     flexDirection: "column",
+    borderRadius: 10,
+    backgroundColor: "#F9F9F9",
     display: "flex",
-    backgroundColor: "#f0f0f0",
     gap: 8,
   },
 });

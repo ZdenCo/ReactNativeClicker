@@ -10,7 +10,7 @@ import Animated, {
 import { ThemedText } from "@/components/ThemedText";
 import { useEffect } from "react";
 
-export function RequiredPats() {
+export function RequiredPats({ require }: { require: number }) {
   // Create a shared value for the animation
   const y = useSharedValue(0);
   const o = useSharedValue(0);
@@ -28,14 +28,18 @@ export function RequiredPats() {
 
   return (
     <Animated.View style={animatedStyle}>
-      <ThemedText style={styles.text}>❤️</ThemedText>
+      <ThemedText
+        style={{ ...styles.text, fontSize: 10 + require, opacity: 0.85 }}
+      >
+        💔
+      </ThemedText>
     </Animated.View>
   );
 }
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 28,
+    fontSize: 24,
     lineHeight: 32,
     marginTop: -6,
   },

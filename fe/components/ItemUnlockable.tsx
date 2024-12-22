@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { buyUnlockable } from "@/store/slices/progressionSlice";
 import { Collapsible } from "./Collapsible";
 import BuyButton from "./BuyButton";
+import { ThemedText } from "./ThemedText";
 
 export default function Item({
   unlockable,
@@ -15,7 +16,7 @@ export default function Item({
   return (
     <View>
       <View style={styles.itemContainer}>
-        <Text>{unlockable.name}</Text>
+        <ThemedText type="defaultSemiBold">{unlockable.name}</ThemedText>
         <BuyButton
           cost={unlockable.cost}
           isUnlocked={unlockable.isUnlocked}
@@ -29,10 +30,12 @@ export default function Item({
 const styles = StyleSheet.create({
   itemContainer: {
     alignItems: "center",
+    minHeight: 65,
     padding: 10,
     flexDirection: "row",
     justifyContent: "space-between",
-
+    borderBottomColor: "#E5E5E5",
+    borderBottomWidth: 1,
     display: "flex",
   },
   button: {

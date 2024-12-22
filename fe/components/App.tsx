@@ -30,20 +30,15 @@ export default function App() {
   (Text as any).defaultProps.style = { fontFamily: "Pixelify" };
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: "white" }}>
       <ImageBackground
         style={styles.topContainer}
         source={require("@/assets/images/bg.jpg")}
+        resizeMode="contain"
       >
         <Header />
 
         <View>
-          <View style={styles.personContainer}>
-            <Image
-              style={{ height: 200, width: 100 }}
-              source={require("@/assets/images/woman.png")}
-            />
-          </View>
           <View style={styles.animalContainerBack}>
             {progressionObject.slice(3).map((item, index) => (
               <ClickableItem key={index} item={item} />
@@ -68,9 +63,10 @@ export default function App() {
 
 const styles = StyleSheet.create({
   topContainer: {
-    width: "100%",
     position: "relative",
-    height: 600,
+    height: 400,
+    backgroundColor: "white",
+    width: "100%",
     display: "flex",
     padding: 10,
     justifyContent: "space-between",
@@ -97,6 +93,7 @@ const styles = StyleSheet.create({
     width: "100%",
     position: "absolute",
     justifyContent: "center",
+    gap: 50,
     bottom: 80,
     flexDirection: "row",
   },

@@ -15,8 +15,8 @@ export const progressionSlice = createSlice({
       {
         id: 1,
         name: "Eduard Kralik",
-        width: 100,
-        height: 100,
+        width: 70,
+        height: 70,
         image: ede,
         value: 1000,
         requiredPats: 0,
@@ -49,8 +49,8 @@ export const progressionSlice = createSlice({
       {
         id: 2,
         name: "Bobisan",
-        width: 100,
-        height: 150,
+        width: 70,
+        height: 120,
         value: 2,
         requiredPats: 0,
         image: bob,
@@ -117,8 +117,8 @@ export const progressionSlice = createSlice({
       {
         id: 4,
         name: "Chico",
-        width: 100,
-        height: 100,
+        width: 170,
+        height: 220,
         value: 4,
         image: chic,
         requiredPats: 0,
@@ -129,8 +129,8 @@ export const progressionSlice = createSlice({
       {
         id: 6,
         name: "Snezenka",
-        width: 100,
-        height: 100,
+        width: 200,
+        height: 220,
         value: 4,
         image: sne,
         requiredPats: 0,

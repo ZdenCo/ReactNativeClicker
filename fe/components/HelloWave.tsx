@@ -40,7 +40,7 @@ export function HelloWave({ onComplete }: { onComplete: () => void }) {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 28,
+    fontSize: 24,
     lineHeight: 32,
     marginTop: -6,
   },

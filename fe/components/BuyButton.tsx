@@ -1,4 +1,5 @@
 import { Pressable, StyleSheet, View, Text } from "react-native";
+import { ThemedText } from "./ThemedText";
 
 export default function BuyButton({
   isUnlocked,
@@ -17,7 +18,7 @@ export default function BuyButton({
           aria-label="Increment value"
           onPress={onClick}
         >
-          <Text>{cost}</Text>
+          <ThemedText type="defaultSemiBold">{`${cost} ❤️`}</ThemedText>
         </Pressable>
       )}
     </View>
@@ -27,7 +28,7 @@ export default function BuyButton({
 const styles = StyleSheet.create({
   button: {
     padding: 10,
-    backgroundColor: "#2196F3",
+    backgroundColor: "#DCD0EA",
     borderRadius: 5,
   },
 });

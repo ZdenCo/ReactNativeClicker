@@ -29,8 +29,8 @@ export default function Header() {
         useNativeDriver: true,
       }),
     ]).start();
-
-    setScoreSize(24 + Math.floor(storeScore / 1000));
+    const size = 24 + Math.floor(storeScore / 1000);
+    setScoreSize(size > 48 ? 48 : size);
   }, [storeScore]);
 
   const animatedStyle = {
@@ -44,9 +44,9 @@ export default function Header() {
   return (
     <Animated.View style={animatedStyle}>
       <ThemedView style={[styles.titleContainer, { fontSize: scoreSize }]}>
-        {/* <ThemedText style={[styles.scoreText, { fontSize: scoreSize }]}> */}
+        <ThemedText>❤️ </ThemedText>
         <CountUp start={prevScore} end={storeScore} duration={1} />
-        {/* </ThemedText> */}
+        <ThemedText> ❤️</ThemedText>
       </ThemedView>
     </Animated.View>
   );

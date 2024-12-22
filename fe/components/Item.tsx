@@ -4,13 +4,14 @@ import { Collapsible } from "./Collapsible";
 import ItemUnlockable from "./ItemUnlockable";
 import BuyButton from "./BuyButton";
 import { useScoreLogic } from "@/hooks/useScoreLogic";
+import { ThemedText } from "./ThemedText";
 
 export default function Item(props: { item: ProgressionItem }) {
   const { buyItemMain, buyUnlockableMain } = useScoreLogic();
   return (
     <View>
       <View style={styles.itemContainer}>
-        <Text>{props.item.name}</Text>
+        <ThemedText type="subtitle">{props.item.name}</ThemedText>
         <BuyButton
           cost={props.item.cost}
           isUnlocked={props.item.isUnlocked}

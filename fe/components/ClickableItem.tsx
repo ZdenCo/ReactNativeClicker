@@ -45,8 +45,6 @@ export default function ClickableItem({ item }: { item: ProgressionItem }) {
   };
 
   const itemSizeStyle = { width: item.width, height: item.height };
-  console.log(itemSizeStyle);
-  console.log(item);
 
   return (
     <View>
@@ -56,7 +54,6 @@ export default function ClickableItem({ item }: { item: ProgressionItem }) {
           onPressOut={handlePressOut}
           style={{ pointerEvents: "auto", ...itemSizeStyle }}
         >
-          {item.requiredPats}
           <Animated.View
             style={[
               styles.clickableItemContainer,
@@ -66,23 +63,33 @@ export default function ClickableItem({ item }: { item: ProgressionItem }) {
             <Image
               style={{ width: "100%", height: "100%" }}
               source={item.image}
+              resizeMode="contain"
             />
           </Animated.View>
         </Pressable>
       ) : (
-        <View
-          style={{
-            ...itemSizeStyle,
-            backgroundColor: "red",
-            borderColor: "black",
-            borderWidth: 1,
-          }}
-        ></View>
+        <View style={itemSizeStyle}></View>
       )}
-      <View style={{ position: "absolute", top: 0, pointerEvents: "none" }}>
-        {item.requiredPats && <RequiredPats></RequiredPats>}
+      <View
+        style={{
+          position: "absolute",
+          top: -25,
+          left: item.width / 3,
+          pointerEvents: "none",
+        }}
+      >
+        {item.requiredPats > 0 && (
+          <RequiredPats require={item.requiredPats}></RequiredPats>
+        )}
       </View>
-      <View style={{ position: "absolute", bottom: 0, pointerEvents: "none" }}>
+      <View
+        style={{
+          position: "absolute",
+          bottom: item.height / 3,
+          left: item.width / 3,
+          pointerEvents: "none",
+        }}
+      >
         {activeAnimations.map((id) => (
           <HelloWave key={id} onComplete={() => {}} />
         ))}
